@@ -1,41 +1,49 @@
 package lab7;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class QueueHospital<PatientType> extends Hospital<PatientType>{
 
-	@Override
-	public void addPatient(Object patient) {
-		// TODO Auto-generated method stub
+	Queue<PatientType> hospital;
+	public QueueHospital()
+	{
+		hospital = new LinkedList<>();
 		
 	}
-
 	@Override
-	public Object nextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+	public void addPatient(PatientType patient) {
+		hospital.add(patient);
 	}
 
 	@Override
-	public Object treatNextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+	public PatientType nextPatient() {
+		return hospital.peek();
+	}
+
+	@Override
+	public PatientType treatNextPatient() {
+		return hospital.poll();
 	}
 
 	@Override
 	public int numPatients() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hospital.size();
 	}
 
 	@Override
 	public String hospitalType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "QueueHospital";
 	}
 
 	@Override
 	public String allPatientInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		String str = "";
+		for(PatientType p: hospital)
+		{
+			str = str + p;
+		}
+		return str;
 	}
 	
 

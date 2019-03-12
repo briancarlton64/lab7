@@ -1,42 +1,51 @@
 package lab7;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class PriorityQueueHospital<PatientType> extends Hospital<PatientType> {
 
+	Queue<PatientType> hospital;
+	public PriorityQueueHospital()
+	{
+		hospital = new PriorityQueue<>();
+		
+	}
 	@Override
 	public void addPatient(PatientType patient) {
-		// TODO Auto-generated method stub
-		
+		hospital.add(patient);
 	}
 
 	@Override
 	public PatientType nextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+		return hospital.peek();
 	}
 
 	@Override
 	public PatientType treatNextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+		return hospital.poll();
 	}
 
 	@Override
 	public int numPatients() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hospital.size();
 	}
 
 	@Override
 	public String hospitalType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "PriorityQueueHospital";
 	}
 
 	@Override
 	public String allPatientInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		String str = "";
+		for(PatientType p: hospital)
+		{
+			str = str + p;
+		}
+		return str;
 	}
+	
 	
 
 }

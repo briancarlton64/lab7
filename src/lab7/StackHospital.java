@@ -1,41 +1,48 @@
 package lab7;
 
-public class StackHospital<PatientType> extends Hospital<PatientType> {
+import java.util.Stack;
 
+public class StackHospital<PatientType> extends Hospital<PatientType> {
+	Stack<PatientType> hospital;
+	public StackHospital()
+	{
+		hospital = new Stack<>();
+		
+	}
 	@Override
 	public void addPatient(PatientType patient) {
-		// TODO Auto-generated method stub
-		
+		hospital.add(patient);
 	}
 
 	@Override
 	public PatientType nextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+		return hospital.peek();
 	}
 
 	@Override
 	public PatientType treatNextPatient() {
-		// TODO Auto-generated method stub
-		return null;
+		return hospital.pop();
 	}
 
 	@Override
 	public int numPatients() {
-		// TODO Auto-generated method stub
-		return 0;
+		return hospital.size();
 	}
 
 	@Override
 	public String hospitalType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "StackHospital";
 	}
 
 	@Override
 	public String allPatientInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		String str = "";
+		PatientType item = hospital.pop();
+		str = str + item; 
+		this.allPatientInfo();
+		hospital.push(item);
+		return str;
 	}
+	
 
 }
