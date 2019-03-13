@@ -1,17 +1,25 @@
 package lab7;
 
 public class SickPerson extends Person {
-	
+	private int severity;
 	public SickPerson(String name, int age) {
 		super(name, age);
-		// TODO Auto-generated constructor stub
+		severity = 0;
 	}
-	protected int compareToImpl(Person p)
-	{
-		//TODO
+	public SickPerson(String name, int age, int severity) {
+		super(name, age);
+		this.severity = severity;
 	}
 	
-	public string toString()
+	protected int compareToImpl(HealthyPerson p)
+	{
+		return(0);
+	}
+	protected int compareToImpl(SickPerson p)
+	{
+		return(p.severity - this.severity);
+	}
+	public String toString()
 	{
 		//TODO
 	}
